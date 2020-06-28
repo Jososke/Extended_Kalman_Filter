@@ -48,8 +48,6 @@ Here is the main protocol that main.cpp uses for uWebSocketIO in communicating w
 
 ## Project Results
 
-The sensor f
-
 Both datasets were tested with the extended kalman filter project - the difference between the datasets include the direction the car is moving and the order the measurments are stored (Radar vs Lasar). On Each dataset it was seen that the sensor fusion algorithm produced an RMSE < [.11, .11, 0.52, 0.52], thus succeeding in the project goals. The images below show the RMSE from the simulator at the end of the simulation.
 
 ![alt text](./images/final.png)
