@@ -74,9 +74,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   	  
       //convertion from polar to cartesian
   	  double x = rho * cos(phi);
-      if (x < 0.0001) x = 0.0001;
+      if (abs(x) < 0.0001) x = 0.0001;
   	  double y = rho * sin(phi);
-      if (y < 0.0001) y = 0.0001;
+      if (abs(y) < 0.0001) y = 0.0001;
   	  double vx = rho_dot * cos(phi);
   	  double vy = rho_dot * sin(phi);
       ekf_.x_ << x, y, vx , vy;
@@ -113,9 +113,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   //Use noise_ax = 9 and noise_ay = 9 for your Q matrix.
   double noise_ax = 9.0, noise_ay = 9.0;
 
-  float dt_2 = dt * dt;
-  float dt_3 = dt_2 * dt;
-  float dt_4 = dt_3 * dt;
+  const float dt_2 = dt * dt;
+  const float dt_3 = dt_2 * dt;
+  const float dt_4 = dt_3 * dt;
 
   // Modify the F matrix so that the time is integrated
   ekf_.F_ = MatrixXd(4, 4);
